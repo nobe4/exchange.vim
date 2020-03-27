@@ -17,21 +17,20 @@ CONTENTS                                                   *exchange-content*
 ================================================================================
 USAGE                                                        *exchange-usage*
 
-You can start the exchange either by calling the command >
-
-  XC
-
-Then, on the next visual selection you make, press <CR> to mark the first
-selection. You can then make a second selection, press <CR> again, and the two
-selections will be swapped.
-
-Alternatively, if you are in visual mode you can press `X` to mark your first
-selection and follow the same process to mark your second selection.
+On the first visual selection you make, press `g:exchange_key_one` to mark the
+first selection. You can then make a second selection, press
+`g:exchange_key_two` again, and the two selections will be swapped.
 
 ================================================================================
 CONFIGURATION                                        *exchange-configuration*
 
-No configuration required, yay!
+                                                         *g:exchange_key_one*
+
+Define the first mapping key to press. Default to `<CR>`.
+
+                                                         *g:exchange_key_two*
+
+Define the second mapping key to press. Default to `<CR>`.
 
 ================================================================================
 LICENSE                                                    *exchange-license*

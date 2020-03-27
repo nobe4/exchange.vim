@@ -2,25 +2,31 @@
 " Will exchange `A -> `B with `C -> `D
 
 function! exchange#Start()
-  " First selection
-  vnoremap <CR> :call exchange#step1()<CR>
+	" First selection
+	execute 'vnoremap '. g:exchange_key_one .' :call exchange#step1()<CR>'
 endfunction
 
 function! exchange#step1()
-  " Save the first marks
-  normal! `<mA`>mB
+	" Save the first marks
+	normal! `<mA`>mB
 
-  " Second selection
-  vnoremap <CR> :call exchange#step2()<CR>
+	" Unmap first key
+	execute 'silent! vunmap ' . g:exchange_key_one
+
+	" Second selection
+	execute 'vnoremap '. g:exchange_key_two .' :call exchange#step2()<CR>'
 endfunction
 
 function! exchange#step2()
-  " Save the second marks
-  normal! `<mC`>mD
+	" Save the second marks
+	normal! `<mC`>mD
 
-  " Switch (and stay at the last place)
-  normal! `Av`By`Cv`Dp`Av`Bp`C
+	" Switch (and stay at the last place)
+	normal! `Av`By`Cv`Dp`Av`Bp`C
 
-  " Remove the CR mapping
-  vunmap <CR>
+	" Unmap second key
+	execute 'silent! vunmap ' . g:exchange_key_two
+
+	" Remap the first key
+	call exchange#Start()
 endfunction

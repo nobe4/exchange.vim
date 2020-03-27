@@ -3,14 +3,12 @@ if exists("g:exchange_version") || &cp
   finish
 endif
 
-" plugin version
-let g:exchange_version = 0.1
+" Plugin version
+let g:exchange_version = 0.2
 
-" Simple command definition
-command! XC call exchange#Start()
+" Set default for variables
+let g:exchange_key_one = get(g:, 'exchange_key_one', '<CR>')
+let g:exchange_key_two = get(g:, 'exchange_key_two', '<CR>')
 
-" Mapping to jump to the step1 quickly.
-" This is the same as v_D and X sounds nice for eXchange
-vnoremap X :call exchange#step1()<CR>
-
-" That's all folks, all the magic is in the autoload folder.
+" Call Starts who does the first step mapping
+call exchange#Start()
